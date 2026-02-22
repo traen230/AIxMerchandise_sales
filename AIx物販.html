@@ -1,0 +1,877 @@
+<!-- BizBright 無料セミナーLP（WordPress貼り付け用：HTML + CSS） -->
+<style>
+  :root{
+    /* テーマカラー：ファーストビューに合わせたブルー系 */
+    --bb-blue-900:#0b2a6f;
+    --bb-blue-800:#0d3b9c;
+    --bb-blue-700:#1557d6;
+    --bb-blue-600:#1f6feb;
+    --bb-sky-50:#eef6ff;
+    --bb-slate-900:#0f172a;
+    --bb-slate-700:#334155;
+    --bb-slate-500:#64748b;
+    --bb-border:#e5e7eb;
+    --bb-card:#ffffff;
+    --bb-shadow:0 10px 26px rgba(15,23,42,.10);
+    --bb-radius:18px;
+  }
+
+  /* ===== Base ===== */
+  .bb-lp{
+    font-family: "Meirio UI","Meiryo UI","Meiryo","メイリオ",system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Arial,sans-serif;
+    line-height:1.75;
+    color:var(--bb-slate-900);
+    background:#fff;
+  }
+  .bb-lp *{box-sizing:border-box;}
+  .bb-wrap{max-width:980px;margin:0 auto;padding:0 16px;}
+  .bb-section{padding:44px 0;}
+  .bb-title{font-size:28px;line-height:1.35;margin:0 0 12px;}
+  .bb-sub{font-size:16px;color:var(--bb-slate-700);margin:0 0 18px;}
+  .bb-lead{font-size:18px;margin:0 0 12px;}
+  .bb-note{font-size:12px;color:var(--bb-slate-500);margin-top:10px;}
+  .bb-kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:800;font-size:12px;letter-spacing:.08em;
+    color:var(--bb-blue-900);
+    background:linear-gradient(180deg,var(--bb-sky-50),#ffffff);
+    border:1px solid rgba(21,87,214,.18);
+    padding:7px 12px;border-radius:999px;margin:0 0 12px;
+  }
+  .bb-kicker:before{
+    content:"";width:8px;height:8px;border-radius:999px;background:var(--bb-blue-600);
+    box-shadow:0 0 0 3px rgba(31,111,235,.18);
+  }
+
+  /* ===== Top view ===== */
+  .bb-hero{margin:0;padding:0;}
+  .bb-hero img{width:100%;height:auto;display:block;border-radius:0;}
+
+  /* ===== Buttons ===== */
+  .bb-ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
+  .bb-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:14px 18px;border-radius:14px;text-decoration:none;font-weight:800;
+    border:1px solid rgba(21,87,214,.45);
+    transition:.15s ease; min-width:220px;
+  }
+  .bb-btn.primary{
+    background:linear-gradient(135deg,var(--bb-blue-700),var(--bb-blue-600));
+    color:#fff;border-color:rgba(21,87,214,.40);
+    box-shadow:0 12px 24px rgba(31,111,235,.22);
+  }
+  .bb-btn.primary:hover{filter:brightness(1.04);}
+  .bb-btn.ghost{
+    background:#fff;color:var(--bb-blue-900);
+  }
+  .bb-btn.ghost:hover{background:var(--bb-sky-50);}
+  .bb-btn.small{padding:12px 14px;min-width:auto;font-size:14px;}
+
+  /* PC / SP画像切替 */
+  .bg-pc { display:block; }
+  .bg-sp { display:none; }
+
+  @media(max-width:768px){
+    .bg-pc { display:none; }
+    .bg-sp { display:block; }
+  }
+
+  /* ===== Cards / Grid ===== */
+  .bb-card{
+    background:var(--bb-card);
+    border:1px solid var(--bb-border);
+    border-radius:var(--bb-radius);
+    padding:18px;
+    box-shadow:0 8px 18px rgba(15,23,42,.06);
+  }
+  .bb-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  @media(min-width:860px){ .bb-grid.cols2{grid-template-columns:1fr 1fr;} }
+
+  /* ===== Lists ===== */
+  .bb-bullets{margin:0;padding-left:18px;}
+  .bb-bullets li{margin:8px 0;}
+  .bb-muted{color:var(--bb-slate-700);}
+
+  /* ===== Overlay sections (Image + overlay text) ===== */
+  .bb-overlay{
+    position:relative;border-radius:var(--bb-radius);overflow:hidden;
+    border:1px solid var(--bb-border);
+    box-shadow:var(--bb-shadow);
+  }
+  .bb-overlay .bg{width:100%;height:auto;display:block;transform:scale(1.01);filter:saturate(1.02) brightness(.96);}
+  .bb-overlay .layer{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg, rgba(11,42,111,.78) 0%, rgba(13,59,156,.45) 56%, rgba(13,59,156,.12) 100%);
+  }
+  .bb-overlay .content{
+    position:absolute;inset:0;
+    display:flex;align-items:center;
+    padding:22px;
+  }
+  .bb-overlay .content-inner{max-width:760px;}
+  .bb-overlay h2{
+    color:#fff;font-size:26px;line-height:1.25;margin:0 0 10px;
+    text-shadow:0 2px 12px rgba(0,0,0,.25);
+  }
+  .bb-overlay p, .bb-overlay li{color:#eaf2ff;}
+  .bb-overlay ul{margin:0;padding-left:18px;font-size:16px;}
+  .bb-overlay li{margin:6px 0;}
+  .bb-overlay .hint{color:#cfe3ff;font-size:13px;margin-top:10px;}
+  @media(min-width:860px){
+    .bb-overlay .content{padding:34px;}
+    .bb-overlay h2{font-size:30px;}
+    .bb-overlay ul{font-size:17px;}
+  }
+/* ===== 悩みブロック専用背景 ===== */
+
+.bb-worry{
+  background-image:url("https://biz-bright.com/wp-content/uploads/2026/01/悩む_PC.png");
+  background-size:cover;
+  background-position:center;
+  min-height:520px;
+}
+
+/* ===== 悩みブロックをより暗くする ===== */
+
+.bb-worry .layer{
+  background:linear-gradient(
+    90deg,
+    rgba(5,20,60,.92) 0%,
+    rgba(10,40,120,.85) 55%,
+    rgba(10,40,120,.65) 100%
+  );
+}
+
+/* スマホ用画像 */
+@media(max-width:768px){
+  .bb-worry{
+    background-image:url("https://biz-bright.com/wp-content/uploads/2026/01/悩む.png");
+    min-height:600px;
+  }
+}
+  /* ===== Step blocks ===== */
+  .bb-steps{display:grid;gap:10px;}
+  .bb-step{
+    display:grid;grid-template-columns:1fr;gap:10px;
+    background:#ffffff;
+    border:1px solid var(--bb-border);
+    border-radius:16px;
+    padding:16px 16px;
+    box-shadow:0 8px 18px rgba(15,23,42,.05);
+  }
+  .bb-step .left{
+    font-weight:900;color:var(--bb-blue-900);
+  }
+  .bb-step .left small{display:block;font-weight:700;color:var(--bb-slate-500);margin-top:2px;}
+  .bb-step .right b{font-weight:900;}
+  @media(min-width:860px){
+    .bb-step{grid-template-columns:220px 1fr;align-items:start;}
+  }
+
+  /* ===== Q&A ===== */
+  .bb-faq{display:grid;gap:12px;}
+  .bb-qa{
+    border:1px solid var(--bb-border);
+    border-radius:16px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 18px rgba(15,23,42,.05);
+  }
+  .bb-qa .q{
+    padding:14px 16px;
+    background:linear-gradient(180deg,var(--bb-sky-50),#fff);
+    border-bottom:1px solid rgba(21,87,214,.14);
+    font-weight:900;color:var(--bb-slate-900);
+  }
+  .bb-qa .a{padding:14px 16px;color:var(--bb-slate-700);}
+  .bb-qa .a b{color:var(--bb-blue-900);}
+
+  /* ===== Table ===== */
+  .bb-tableWrap{
+    overflow:auto;
+    border:1px solid var(--bb-border);
+    border-radius:16px;
+    box-shadow:0 8px 18px rgba(15,23,42,.05);
+    background:#fff;
+  }
+  table.bb-table{
+    width:100%; border-collapse:separate; border-spacing:0;
+    min-width:820px;
+    font-size:14px;
+  }
+  .bb-table th, .bb-table td{
+    padding:12px 12px; vertical-align:top; border-bottom:1px solid var(--bb-border);
+  }
+  .bb-table th{
+    position:sticky; top:0;
+    background:linear-gradient(180deg,var(--bb-sky-50),#fff);
+    color:var(--bb-blue-900); font-weight:900;
+    border-bottom:1px solid rgba(21,87,214,.18);
+  }
+  .bb-table tr:last-child td{border-bottom:none;}
+  .bb-table td strong{color:var(--bb-slate-900);}
+
+  /* ===== Final CTA ===== */
+  .bb-final{
+    background:linear-gradient(135deg,var(--bb-blue-900),var(--bb-blue-700));
+    color:#fff;
+    border-radius:var(--bb-radius);
+    padding:22px;
+    box-shadow:0 14px 32px rgba(11,42,111,.22);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .bb-final h2{margin:0 0 10px;font-size:26px;line-height:1.25;}
+  .bb-final p{margin:0;color:#dbeafe;}
+  .bb-final .bb-btn.primary{
+    background:#ffffff;color:var(--bb-blue-900);border-color:#fff;
+    box-shadow:none;
+  }
+  .bb-final .bb-btn.primary:hover{filter:brightness(0.98);}
+  .bb-divider{height:1px;background:rgba(255,255,255,.18);margin:14px 0 0;}
+
+  /* ===== Anchor offset (WP fixed header対策) ===== */
+  .bb-anchor{scroll-margin-top:90px;}
+
+</style>
+
+<div class="bb-lp">
+
+  <!-- ===== ファーストビュー（指定画像をそのまま使用） ===== -->
+  <div class="bb-hero">
+    <img src="https://biz-bright.com/wp-content/uploads/2026/02/AI-x-物販-バナー_1.png" alt="AI時代に取り残されない なりたい自分へのロードマップ">
+  </div>
+
+  <!-- ===== 悩みブロック（PC / スマホ画像切替オーバーレイ） ===== -->
+<section class="bb-section bb-anchor" id="worry">
+  <div class="bb-wrap">
+    <div class="bb-overlay bb-worry">
+
+      <div class="layer"></div>
+
+      <div class="content">
+        <div class="content-inner">
+          <h2>将来のこと、こんな不安はありませんか？</h2>
+          <ul>
+            <li>このまま今の働き方だけで大丈夫なのか分からない</li>
+            <li>老後や将来のお金が、ずっと頭の片隅にある</li>
+            <li>資産を積み上げたい気持ちはある</li>
+            <li>でも投資は怖い</li>
+            <li>そもそも回せる資金がない</li>
+            <li>副業に興味はあるが、自信がない</li>
+          </ul>
+          <p class="hint">
+            もし一つでも当てはまるなら、この無料セミナーはあなたのためのものです。
+          </p>
+
+          <div class="bb-ctaRow">
+            <a class="bb-btn primary" href="#apply">無料セミナーに参加する</a>
+            <a class="bb-btn ghost" href="#roadmap">ロードマップを見る</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- ===== 不安の正体 ===== -->
+  <section class="bb-section bb-anchor" id="truth">
+    <div class="bb-wrap">
+      <span class="bb-kicker">不安の正体</span>
+      <h2 class="bb-title">不安の正体は「努力不足」ではありません。</h2>
+      <p class="bb-sub">
+        よく「継続しろ」「努力しろ」と言われます。<br>
+        でも、それは本質ではありません。どれだけ精神力が強い人でも、失敗が連続すれば折れます。
+      </p>
+
+      <div class="bb-grid cols2">
+        <div class="bb-card">
+          <p class="bb-lead" style="margin-bottom:8px;"><b>人が続かない理由は、才能不足でも意志の弱さでもありません。</b></p>
+          <p class="bb-muted" style="margin:0;">
+            <b>続く環境がないから</b>です。<br>
+            小さな成功を感じられれば、人は自然に続きます。
+          </p>
+        </div>
+        <div class="bb-card">
+          <p class="bb-lead" style="margin-bottom:8px;"><b>だから必要なのは「環境」</b></p>
+          <ul class="bb-bullets" style="margin:0;">
+            <li>小さな成功が見える</li>
+            <li>失敗をその場で修正できる</li>
+            <li>一人で抱え込まない</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 私たちの使命（高さ自動調整オーバーレイ） ===== -->
+<section class="bb-section bb-anchor" id="mission">
+  <div class="bb-wrap">
+
+    <div class="mission-block">
+
+      <!-- 背景画像 -->
+      <img src="https://biz-bright.com/wp-content/uploads/2026/02/明るい未来.png"
+           alt="私たちの使命"
+           class="mission-img">
+
+      <!-- グラデーション -->
+      <div class="mission-layer"></div>
+
+      <!-- テキスト -->
+      <div class="mission-content">
+        <div class="mission-inner">
+
+          <h2>私たちの使命</h2>
+
+          <p>
+            私たちの使命は、<br>
+            「稼がせること」でも「頑張らせること」でもありません。
+          </p>
+
+          <p><strong>続いてしまう環境をつくること。</strong></p>
+
+          <p>
+            多くの人が途中で止まります。能力がないからではありません。
+          </p>
+
+          <ul>
+            <li>孤独だから</li>
+            <li>順番が分からないから</li>
+            <li>失敗を修正できないから</li>
+          </ul>
+
+          <p>
+            だから私たちは、
+            <strong>小さな成功を積み重ねられる環境</strong>、
+            <strong>失敗をその場で修正できる環境</strong>、
+            <strong>一人で抱え込まない環境</strong>
+            を設計しています。
+          </p>
+
+          <p>
+            一発逆転ではなく、
+            <strong>積み上げる人生を増やすこと。</strong>
+            それが、私たちの使命です。
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* ===== Mission Block ===== */
+
+.mission-block{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--bb-shadow);
+}
+
+/* 画像は高さ固定しない */
+.mission-img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* グラデーション */
+/* ===== 私たちの使命：薄オーバーレイ＋黒文字 ===== */
+
+.mission-layer{
+  background:linear-gradient(
+    rgba(255,255,255,.28),
+    rgba(255,255,255,.22)
+  );
+}
+
+.mission-content{
+  position:absolute;
+  inset:0;
+  padding:40px;
+  display:flex;
+  align-items:center;
+}
+
+.mission-inner{
+  max-width:760px;
+  color:#111827;
+  line-height:1.9;
+
+  background:rgba(255,255,255,.75);  /* ← ここが重要 */
+  backdrop-filter:blur(6px);         /* ガラス効果（対応ブラウザのみ） */
+  padding:36px;
+  border-radius:18px;
+}
+.mission-inner h2{
+  color:#0b2a6f;            /* 見出しはブランドブルー */
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+.mission-inner strong{
+  color:#0b2a6f;            /* 強調もブルー */
+}
+
+.mission-inner ul{
+  margin:12px 0;
+  padding-left:18px;
+}
+
+/* 影は不要 */
+.mission-inner h2,
+.mission-inner p,
+.mission-inner li{
+  text-shadow:none;
+}
+
+/* ===== スマホ ===== */
+@media(max-width:768px){
+
+  .mission-content{
+    position:static;
+    padding:24px;
+    background:#ffffff;   /* ← スマホも白背景に */
+  }
+
+  .mission-layer{
+    display:none;
+  }
+
+  .mission-inner h2{
+    font-size:22px;
+  }
+
+}
+
+</style>
+
+  <!-- ===== 人生アップデートのロードマップ（指定画像にオーバーレイ） ===== -->
+  <section class="bb-section bb-anchor" id="roadmap">
+    <div class="bb-wrap">
+      <div class="bb-overlay">
+        <img class="bg" src="https://biz-bright.com/wp-content/uploads/2026/02/ステップ.png" alt="人生アップデートのロードマップ">
+        <div class="layer"></div>
+        <div class="content">
+          <div class="content-inner">
+            <h2>人生アップデートのロードマップ</h2>
+            <p style="margin:0;">
+              積み上がる人は、必ず順番があります。<br>
+              コースはバラバラではなく、<b style="color:#fff;">段階に応じて“使っていく”</b>ものです。
+            </p>
+            <div class="bb-ctaRow">
+              <a class="bb-btn primary" href="#courses">コース全体像を見る</a>
+              <a class="bb-btn ghost" href="#apply">無料セミナーに参加する</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bb-note">※ロードマップ見出しは指定画像にオーバーレイしています（詳細は下に記載）。</div>
+
+      <!-- 詳細ステップ（テキスト） -->
+      <div style="height:14px;"></div>
+      <div class="bb-steps">
+        <div class="bb-step">
+          <div class="left">STEP0｜基礎 <small>AI × 思考</small></div>
+          <div class="right">
+            <b>・消費から投資への思考転換</b>／<b>・継続の構造理解</b>／<b>・AI基礎活用</b><br>
+            いきなり稼がせません。まずは土台を整えます。
+          </div>
+        </div>
+
+        <div class="bb-step">
+          <div class="left">STEP1｜実践 <small>収入UP</small></div>
+          <div class="right">
+            <b>▶ 物販コース</b><br>
+            市場で学び、数字で改善し、小さな成功を積む。<br>
+            ここで初めて「自分にもできるかもしれない」と感じ始めます。
+          </div>
+        </div>
+
+        <div class="bb-step">
+          <div class="left">STEP2｜分析力UP <small>物販×AI</small></div>
+          <div class="right">
+            <b>▶ AIコース（物販連動）</b><br>
+            物販という実践フィールドで、<b>分析力</b>／<b>改善力</b>／<b>数字思考</b>を鍛えます。<br>
+            副業だけでなく、本業にも活きます。
+          </div>
+        </div>
+
+        <div class="bb-step">
+          <div class="left">STEP3｜仕組化 <small>時間の余白</small></div>
+          <div class="right">
+            <b>▶ 自社仕組化サービス</b><br>
+            外注化・自動化・導線設計。教えるだけでなく、<b>実装まで支援</b>。<br>
+            時間の余白を生み出します。
+          </div>
+        </div>
+
+        <div class="bb-step">
+          <div class="left">STEP4｜投資 <small>資産形成フェーズ</small></div>
+          <div class="right">
+            <b>▶ 投資コース</b><br>
+            銘柄当てではありません。学ぶのは「構造」です。
+            <ul class="bb-bullets" style="margin:8px 0 0;">
+              <li><b>証券会社の選び方</b>（ネット証券／対面証券）</li>
+              <li><b>投資と政治・経済の関係</b></li>
+              <li><b>未来の世界と投資の関係</b></li>
+              <li><b>長期分散投資</b></li>
+              <li><b>安全パターンとチャレンジパターン</b></li>
+            </ul>
+            構造から理解すれば、不安は安心へ変わります。<br>
+            ここまで来ると、<b>資産10倍を目指せるフェーズ</b>に入ります。
+          </div>
+        </div>
+
+        <div class="bb-step">
+          <div class="left">STEP5｜拡張 <small>SNS・コミュニティ</small></div>
+          <div class="right">
+            <b>▶ SNSマーケコース ／ ▶ コミュニティ設計コース</b><br>
+            信頼を積み上げ、人を巻き込む構造へ。
+          </div>
+        </div>
+
+        <div class="bb-step">
+          <div class="left">STEP6｜無形コンテンツ <small>継続の設計</small></div>
+          <div class="right">
+            <b>・自分の強みの探し方</b>／<b>・強みの言語化</b><br>
+            同じことを続けると人は飽きます。だからこそ、自分の人生を形にするフェーズを用意しています。<br>
+            これは高単価化の話ではありません。<b>継続を止めないための設計</b>です。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 受講生のリアルな悩み（FAQ） ===== -->
+  <section class="bb-section bb-anchor" id="faq">
+    <div class="bb-wrap">
+      <span class="bb-kicker">受講生のリアルな悩み</span>
+      <h2 class="bb-title">「自分でもできる？」に、先に答えます。</h2>
+      <p class="bb-sub">よく出る悩みと、私たちの回答です。</p>
+
+      <div class="bb-faq">
+        <div class="bb-qa">
+          <div class="q">ビジネス未経験でもできる？</div>
+          <div class="a">大丈夫です。<b>PCのスキルからセットアップまで</b>、リアル作業会で伴走します。</div>
+        </div>
+
+        <div class="bb-qa">
+          <div class="q">物販で商品を売り出したけど、なかなか売れなかったら？</div>
+          <div class="a">大丈夫です。<b>週3回の公開添削</b>で、売れるまで徹底的に改善します。</div>
+        </div>
+
+        <div class="bb-qa">
+          <div class="q">収入UPできたけど、作業に追われたりしない？</div>
+          <div class="a">大丈夫です。<b>仕組化のサービス</b>も準備しています。自分で仕組みたい方は成功事例ベースで徹底サポート。難しい方はサービス利用で一気に時短できます。</div>
+        </div>
+
+        <div class="bb-qa">
+          <div class="q">投資をしたことがない…本当に利益は出るの？</div>
+          <div class="a">
+            個別の銘柄を教えることはしません。代わりに、投資の基礎をベースに
+            <b>安全パターン</b>と<b>チャレンジパターン</b>に分け、各自のフェーズに合わせて教えるので安心してください。
+          </div>
+        </div>
+      </div>
+
+      <div class="bb-ctaRow">
+        <a class="bb-btn primary" href="#apply">無料セミナーに参加する</a>
+        <a class="bb-btn ghost" href="#instructors">講師紹介を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== コース全体像（ワクワク） ===== -->
+  <section class="bb-section bb-anchor" id="courses">
+    <div class="bb-wrap">
+      <span class="bb-kicker">コース全体像</span>
+      <h2 class="bb-title">このラボには、あなたの“次のステージ”がすべてあります。</h2>
+      <p class="bb-sub">
+        収入をつくる場所も、資産を育てる場所も、仕組みを実装する場所も、自分を表現する場所も。<br>
+        すべてが<b>「順番」で用意</b>されています。
+      </p>
+
+      <div class="bb-grid cols2">
+        <div class="bb-card">
+          <h3 style="margin:0 0 8px;color:var(--bb-blue-900);">実践と分析</h3>
+          <ul class="bb-bullets" style="margin:0;">
+            <li>物販コース</li>
+            <li>AIコース（物販連動）</li>
+            <li>改善・分析力トレーニング</li>
+          </ul>
+        </div>
+        <div class="bb-card">
+          <h3 style="margin:0 0 8px;color:var(--bb-blue-900);">仕組化と投資</h3>
+          <ul class="bb-bullets" style="margin:0;">
+            <li>自社仕組化サービス（実装）</li>
+            <li>投資コース（政治・経済／未来／長期分散）</li>
+          </ul>
+        </div>
+        <div class="bb-card">
+          <h3 style="margin:0 0 8px;color:var(--bb-blue-900);">拡張フェーズ</h3>
+          <ul class="bb-bullets" style="margin:0;">
+            <li>SNSマーケコース</li>
+            <li>コミュニティ設計コース</li>
+          </ul>
+        </div>
+        <div class="bb-card">
+          <h3 style="margin:0 0 8px;color:var(--bb-blue-900);">無形コンテンツ（継続の設計）</h3>
+          <ul class="bb-bullets" style="margin:0;">
+            <li>自分の強みの探し方</li>
+            <li>強みの言語化</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="bb-lead" style="margin-top:16px;">
+        <b>あなたに合う道を選べばいい。</b> でも、順番だけは飛ばさない。だから積み上がります。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 講師紹介（表） ===== -->
+  <section class="bb-section bb-anchor" id="instructors">
+    <div class="bb-wrap">
+      <span class="bb-kicker">講師紹介</span>
+      <h2 class="bb-title">不安の形は違っても、進み方は共通でした。</h2>
+      <p class="bb-sub">あなたに合う“道の先輩”が、必ずいます。</p>
+
+      <div class="bb-tableWrap">
+        <table class="bb-table" aria-label="講師紹介">
+          <thead>
+            <tr>
+              <th>講師</th>
+              <th>強み・実績</th>
+              <th>担当</th>
+              <th>適したペルソナ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>統括ナビゲーター</strong></td>
+              <td>月商700万実業・投資成果・AI内製</td>
+              <td>全体設計・仕組化</td>
+              <td>本業を続けながら堅実に積み上げたい人</td>
+            </tr>
+            <tr>
+              <td><strong>事業売却経験実業家</strong></td>
+              <td>塾・飲食・コミュニティ経営</td>
+              <td>事業拡大</td>
+              <td>将来独立志向の人</td>
+            </tr>
+            <tr>
+              <td><strong>V字回復講師</strong></td>
+              <td>どん底から再起</td>
+              <td>マインド</td>
+              <td>人生を立て直したい人</td>
+            </tr>
+            <tr>
+              <td><strong>借金完済講師</strong></td>
+              <td>飲食借金完済</td>
+              <td>再スタート</td>
+              <td>過去に失敗経験のある人</td>
+            </tr>
+            <tr>
+              <td><strong>世界を旅する講師</strong></td>
+              <td>自由な働き方実践</td>
+              <td>時間の自由</td>
+              <td>FIRE志向の人</td>
+            </tr>
+            <tr>
+              <td><strong>50代女性講師</strong></td>
+              <td>就職難→自力収入確立</td>
+              <td>自信回復</td>
+              <td>主婦・50代以上</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bb-ctaRow">
+        <a class="bb-btn primary" href="#apply">無料セミナーに参加する</a>
+        <a class="bb-btn ghost" href="#practice">実践環境を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 実践環境（画像＋下テキスト／オーバーレイなし） ===== -->
+<section class="bb-section bb-anchor" id="practice">
+  <div class="bb-wrap">
+    <!-- テキスト -->
+    <span class="bb-kicker">実践環境</span>
+    <h2 class="bb-title">やる気ではなく、環境で続ける。</h2>
+
+    <p class="bb-sub">
+      人生アップデートラボは「学ぶ場所」ではなく、<br>
+      常に実践し、改善し続ける環境です。
+    </p>
+
+    <div class="bb-card">
+      <ul class="bb-bullets">
+        <li><b>毎週土曜 朝2時間</b> Web作業会</li>
+        <li><b>月1回</b> Web勉強会</li>
+        <li><b>月1回</b> リアル作業会</li>
+        <li><b>週3回</b> 公開添削</li>
+        <li><b>仲間と進む環境</b></li>
+      </ul>
+    </div>
+
+    <div class="bb-ctaRow">
+      <a class="bb-btn primary" href="#apply">無料セミナーに参加する</a>
+      <a class="bb-btn ghost" href="#learn">セミナー内容を見る</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== セミナー内容オーバーレイ（SP安全版） ===== -->
+<section class="bb-section">
+  <div class="bb-wrap">
+
+    <div class="seminar-overlay">
+
+      <!-- 背景画像 -->
+      <img src="https://biz-bright.com/wp-content/uploads/2026/02/セミナー風景.png"
+           alt="無料セミナー内容"
+           class="seminar-img">
+
+      <!-- オーバーレイ（PCのみ） -->
+      <div class="seminar-layer"></div>
+
+      <!-- テキスト -->
+      <div class="seminar-content">
+        <div class="seminar-inner">
+
+          <h2>無料セミナーで分かること</h2>
+
+          <ul>
+            <li>AI時代の積み上げ構造</li>
+            <li>収入→仕組化→投資の順番</li>
+            <li>投資と世界（政治・経済・未来）の関係</li>
+            <li>なぜ多くの人が途中で止まるのか（努力ではなく環境）</li>
+          </ul>
+
+          <p class="seminar-note">
+            売り込みなし。強制なし。まずは全体像を整理してください。
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+.seminar-overlay{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--bb-shadow);
+}
+
+.seminar-img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* PC用オーバーレイ */
+.seminar-layer{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(11,42,111,.85) 0%, rgba(13,59,156,.55) 55%, rgba(13,59,156,.15) 100%);
+}
+
+.seminar-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  padding:32px;
+}
+
+.seminar-inner{
+  max-width:720px;
+  color:#fff;
+}
+
+.seminar-inner h2{
+  font-size:28px;
+  margin:0 0 16px;
+}
+
+.seminar-inner ul{
+  margin:0;
+  padding-left:18px;
+  font-size:17px;
+  line-height:1.8;
+}
+
+.seminar-note{
+  margin-top:16px;
+  font-size:15px;
+  color:#cfe3ff;
+}
+
+/* ===== スマホ対応 ===== */
+@media(max-width:768px){
+
+  .seminar-layer{
+    display:none;
+  }
+
+  .seminar-content{
+    position:static;
+    background:#0b2a6f;
+    padding:20px;
+  }
+
+  .seminar-inner{
+    color:#ffffff;
+  }
+
+  .seminar-inner h2{
+    font-size:20px;
+  }
+
+  .seminar-inner ul{
+    font-size:15px;
+  }
+
+}
+</style>
+
+  <!-- ===== 最後に + CTA ===== -->
+  <section class="bb-section bb-anchor" id="apply">
+    <div class="bb-wrap">
+      <div class="bb-final">
+        <h2>未来を「構造」から整えませんか？</h2>
+        <p>
+          人生は努力量では決まりません。続く環境があるかどうか。<br>
+          将来の不安を、一度「構造」から整理してみましょう。
+        </p>
+
+        <div class="bb-ctaRow" style="margin-top:14px;">
+          <!-- ▼申込先URLに差し替えてください（フォーム／LINE／オプチャ等） -->
+          <a class="bb-btn primary" href="https://biz-bright.com/" target="_blank" rel="noopener">▶ 無料セミナーに参加する</a>
+          <a class="bb-btn ghost" href="#roadmap">ロードマップを見直す</a>
+        </div>
+
+        <div class="bb-divider"></div>
+        <p class="bb-note" style="color:#dbeafe;margin-top:10px;">
+          ※「参加する」ボタンのリンク先は、申込フォーム（または案内ページ）へ差し替えてください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
