@@ -122,6 +122,91 @@
     .bb-overlay h2{font-size:30px;}
     .bb-overlay ul{font-size:17px;}
   }
+
+  /* ===== Roadmap hero: PCは文字量に合わせて高さを決める ===== */
+  @media(min-width:769px){
+    .bb-roadmap-overlay{
+      position:relative;
+    }
+    .bb-roadmap-overlay .bg,
+    .bb-roadmap-overlay .layer{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+    .bb-roadmap-overlay .bg{
+      object-fit:cover;
+    }
+    .bb-roadmap-overlay .content{
+      position:relative;
+      inset:auto;
+      display:flex;
+      align-items:center;
+      min-height:0;
+    }
+  }
+
+  .bb-roadmap-intro{
+    background:#fff;
+    border:1px solid var(--bb-border);
+    border-radius:var(--bb-radius);
+    padding:22px;
+    box-shadow:0 8px 18px rgba(15,23,42,.06);
+  }
+  .bb-roadmap-intro h2{
+    margin:0 0 10px;
+    color:var(--bb-blue-900);
+    font-size:30px;
+    line-height:1.25;
+  }
+  .bb-roadmap-intro p{
+    margin:0;
+    color:var(--bb-slate-700);
+  }
+
+  .bb-roadmap-steps-overlay .content{
+    position:relative;
+    inset:auto;
+    align-items:flex-start;
+  }
+  .bb-roadmap-steps-overlay .content-inner{
+    max-width:none;
+    width:100%;
+  }
+  .bb-roadmap-steps-overlay .bg,
+  .bb-roadmap-steps-overlay .layer{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+  .bb-roadmap-steps-overlay .bg{
+    object-fit:cover;
+  }
+  .bb-roadmap-steps-overlay .layer{
+    background:linear-gradient(90deg, rgba(11,42,111,.48) 0%, rgba(13,59,156,.36) 56%, rgba(13,59,156,.18) 100%);
+  }
+  .bb-roadmap-steps-overlay .bb-step{
+    background:rgba(255,255,255,.82);
+    border-color:rgba(255,255,255,.55);
+  }
+  .bb-roadmap-steps-overlay .bb-step .right,
+  .bb-roadmap-steps-overlay .bb-step .right p,
+  .bb-roadmap-steps-overlay .bb-step .right li{
+    color:var(--bb-slate-900);
+  }
+  .bb-roadmap-steps-overlay .bb-step .left{
+    color:var(--bb-blue-900);
+  }
+  .bb-roadmap-steps-overlay .bb-step .left small{
+    color:var(--bb-slate-700);
+  }
+  @media(max-width:768px){
+    .bb-roadmap-steps-overlay .content{
+      padding:16px;
+    }
+  }
 /* ===== 悩みブロック専用背景 ===== */
 
 .bb-worry{
@@ -384,10 +469,9 @@
 /* ===== 私たちの使命：薄オーバーレイ＋黒文字 ===== */
 
 .mission-layer{
-  background:linear-gradient(
-    rgba(255,255,255,.28),
-    rgba(255,255,255,.22)
-  );
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.68);
 }
 
 .mission-content{
@@ -402,11 +486,6 @@
   max-width:760px;
   color:#111827;
   line-height:1.9;
-
-  background:rgba(255,255,255,.75);  /* ← ここが重要 */
-  backdrop-filter:blur(6px);         /* ガラス効果（対応ブラウザのみ） */
-  padding:36px;
-  border-radius:18px;
 }
 .mission-inner h2{
   color:#0b2a6f;            /* 見出しはブランドブルー */
@@ -454,28 +533,25 @@
   <!-- ===== 人生アップデートのロードマップ（指定画像にオーバーレイ） ===== -->
   <section class="bb-section bb-anchor" id="roadmap">
     <div class="bb-wrap">
-      <div class="bb-overlay">
-        <img class="bg" src="https://biz-bright.com/wp-content/uploads/2026/02/ステップ.png" alt="人生アップデートのロードマップ">
+      <div class="bb-roadmap-intro">
+        <h2>人生アップデートのロードマップ</h2>
+        <p>
+          積み上がる人は、必ず順番があります。<br>
+          コースはバラバラではなく、<b>段階に応じて“使っていく”</b>ものです。
+        </p>
+        <div class="bb-ctaRow">
+          <a class="bb-btn primary" href="#courses">コース全体像を見る</a>
+          <a class="bb-btn ghost" href="#apply">無料セミナーに参加する</a>
+        </div>
+      </div>
+      
+      <!-- 詳細ステップ（テキスト） -->
+      <div style="height:14px;"></div>
+      <div class="bb-overlay bb-roadmap-overlay bb-roadmap-steps-overlay">
+        <img class="bg" src="https://biz-bright.com/wp-content/uploads/2026/02/ステップ.png" alt="人生アップデートのロードマップ ステップ背景">
         <div class="layer"></div>
         <div class="content">
           <div class="content-inner">
-            <h2>人生アップデートのロードマップ</h2>
-            <p style="margin:0;">
-              積み上がる人は、必ず順番があります。<br>
-              コースはバラバラではなく、<b style="color:#fff;">段階に応じて“使っていく”</b>ものです。
-            </p>
-            <div class="bb-ctaRow">
-              <a class="bb-btn primary" href="#courses">コース全体像を見る</a>
-              <a class="bb-btn ghost" href="#apply">無料セミナーに参加する</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bb-note">※ロードマップ見出しは指定画像にオーバーレイしています（詳細は下に記載）。</div>
-
-      <!-- 詳細ステップ（テキスト） -->
-      <div style="height:14px;"></div>
       <div class="bb-steps">
         <div class="bb-step">
           <div class="left">STEP0｜基礎 <small>AI × 思考</small></div>
@@ -543,6 +619,9 @@
             <b>・自分の強みの探し方</b>／<b>・強みの言語化</b><br>
             同じことを続けると人は飽きます。だからこそ、自分の人生を形にするフェーズを用意しています。<br>
             これは高単価化の話ではありません。<b>継続を止めないための設計</b>です。
+          </div>
+        </div>
+      </div>
           </div>
         </div>
       </div>
@@ -788,7 +867,7 @@
 .seminar-layer{
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg, rgba(11,42,111,.85) 0%, rgba(13,59,156,.55) 55%, rgba(13,59,156,.15) 100%);
+  background:rgba(255,255,255,.68);
 }
 
 .seminar-content{
@@ -801,12 +880,13 @@
 
 .seminar-inner{
   max-width:720px;
-  color:#fff;
+  color:#111827;
 }
 
 .seminar-inner h2{
   font-size:28px;
   margin:0 0 16px;
+  color:#0b2a6f;
 }
 
 .seminar-inner ul{
@@ -819,7 +899,28 @@
 .seminar-note{
   margin-top:16px;
   font-size:15px;
-  color:#cfe3ff;
+  color:#334155;
+}
+
+/* PC: 文字量に合わせて高さを決める */
+@media(min-width:769px){
+  .seminar-img,
+  .seminar-layer{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+
+  .seminar-img{
+    object-fit:cover;
+  }
+
+  .seminar-content{
+    position:relative;
+    inset:auto;
+    min-height:0;
+  }
 }
 
 /* ===== スマホ対応 ===== */
@@ -831,12 +932,12 @@
 
   .seminar-content{
     position:static;
-    background:#0b2a6f;
+    background:#ffffff;
     padding:20px;
   }
 
   .seminar-inner{
-    color:#ffffff;
+    color:#111827;
   }
 
   .seminar-inner h2{
